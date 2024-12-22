@@ -1,10 +1,11 @@
 import './App.css';
-import ApiAccess from './Component/ApiAccess';
+// import ApiAccess from './Component/ApiAccess';
+import Movilist from './Component/Movilist';
 
 function App() {
   return (
     <div className="App">
-      <ApiAccess/>
+      <Movilist/>
     </div>
   );
 }
