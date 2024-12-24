@@ -6,7 +6,10 @@ import { useState, useEffect } from 'react';
 import { Database } from './ApiAccess';
 
 
-
+function PlayList(event){
+ console.log(event);
+ 
+}
 
 function Movilist() {
   const [ list, setList ] = useState([]);
@@ -42,7 +45,7 @@ function Movilist() {
 
   //   }));
 
-// const {select}=list.page;
+  // const {select}=list.page;
   // const arrangeValues =list.results.map((track) => ({
   //       id: track.id,
   //       name: track.title,
@@ -57,16 +60,40 @@ function Movilist() {
   //     </div>
   //   )
   // })
+  // let listdata=[list.results];
 
-  
-  console.log(list.map((track)=>track.id));
 
+  // const my_arr = [
+  //   {id: 1, arr: [{subId: 1, value: 1}]},
+  //   {id: 2, arr: [{subId: 2, value: 2}]},
+  //   {id: 3, arr: [{subId: 3, value: 1}]},
+  // ]
+
+  const getList = list.results;
+console.log(getList);
+
+
+  const arrangeList = getList?.map((track) => {
+    return (
+      <div key ={track.id}>
+       
+       <button  onClick={PlayList} > <p>{ track.title}+</p> </button>
+      </div>
+
+    )
+  }
+
+  )
+
+
+  console.log();
 
 
   return (
 
     <>
       <div>Movilist</div>
+      {arrangeList}
      
 
     </>
