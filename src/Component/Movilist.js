@@ -1,18 +1,51 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-// import ApiAccess from './ApiAccess'
 
 
 import { Database } from './ApiAccess';
 
 
-function PlayList(event){
- console.log(event);
- 
-}
+const fruitData = [
+  {
+      name: "Apples",
+      details: [
+          {
+              fruitId: '1',
+              gradingDetails: [{ grade: 'A' }]
+          },
+          {
+              fruitId: '2',
+              gradingDetails: [{ grade: 'B' }]
+          }
+      ]
+  },
+  {
+      name: "Oranges",
+      details: [
+          {
+              fruitId: '3',
+              gradingDetails: [{ grade: 'B' }]
+          },
+          {
+              fruitId: '4',
+              gradingDetails: [{ grade: 'D' }]
+          }
+      ]
+  },
+];
+
+// console.log(fruitData[0]);
+
+// var filteredObj = fruitData.filter(function (item) {
+//   return item.name==="Oranges";
+// });
+
+// console.log(filteredObj);
+
 
 function Movilist() {
   const [ list, setList ] = useState([]);
+  const [keyValue, setKeyValue]= useState();
 
   // {photos.map((photo) => (
   //   <img key={photo.id} src={photo.url} alt={photo.title} width={100} />
@@ -25,7 +58,6 @@ function Movilist() {
 
   const check = Database();
 
-  // console.log(check);
 
   useEffect(() => {
     fetch(check)
@@ -33,7 +65,6 @@ function Movilist() {
         return res.json();
       })
       .then((data) => {
-        // console.log(data);
         setList(data);
       });
   }, [ check ]);
@@ -68,27 +99,35 @@ function Movilist() {
   //   {id: 2, arr: [{subId: 2, value: 2}]},
   //   {id: 3, arr: [{subId: 3, value: 1}]},
   // ]
-
+  // console.log(keyValue);
   const getList = list.results;
-console.log(getList);
+console.log(list);
+
+var filteredObj = getList?.filter(function (item) {
+    return item.id===keyValue;
+  });
 
 
-  const arrangeList = getList?.map((track) => {
+  console.log(filteredObj);
+  
+
+  let arrangeList = getList?.map((track) => {
+   
+
+    
+    
     return (
       <div key ={track.id}>
        
-       <button  onClick={PlayList} > <p>{ track.title}+</p> </button>
+       <button onClick={()=>{
+        setKeyValue(track.id)
+       }} > <p>{ track.title}+</p> </button>
       </div>
-
+ 
     )
   }
 
   )
-
-
-  console.log();
-
-
   return (
 
     <>
