@@ -25,16 +25,20 @@ function Movilist() {
 
 
   const getList = list.results;
-  console.log(list);
+  // console.log(list);
 
   var filteredObj = getList?.filter(function (item) {
-    return item.id === keyValue;
+    return  item.id  !== keyValue;
   });
 
+  let arrangeList
+  if(Boolean(filteredObj)){
+    arrangeList =filteredObj;
+    }
+  console.log(arrangeList);
+  
 
-  console.log(filteredObj);
-
-  let arrangeList = getList?.map((track) => {
+   arrangeList = getList?.map((track) => {
     return (
       <div key={track.id}>
 
