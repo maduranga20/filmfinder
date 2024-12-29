@@ -8,6 +8,7 @@ import { Database } from './ApiAccess';
 function Movilist() {
   const [ list, setList ] = useState([]);
   const [ keyValue, setKeyValue ] = useState();
+  // const [ change, setChangeList ] = useState();
 
 
   const check = Database();
@@ -25,20 +26,36 @@ function Movilist() {
 
 
   const getList = list.results;
-  // console.log(list);
+  // let changeValue=getList;
+  // setChangeList(getList);
+  var arrangeList;
 
-  var filteredObj = getList?.filter(function (item) {
-    return  item.id  !== keyValue;
-  });
 
-  let arrangeList
-  if(Boolean(filteredObj)){
-    arrangeList =filteredObj;
-    }
-  console.log(arrangeList);
+  // filteredObj = getList?.filter(function (item) {
+  //   return item.id !==keyValue;
+
+
+  // var selectId ;
+  let selectId=[];
+
+if(keyValue===undefined){
+  // console.log("undefined");
   
+}
+else{
+  // selectId = getList?.filter(function (item) {
+  //   return item.id===keyValue;
+  // });
+  selectId.unshift(keyValue);
 
-   arrangeList = getList?.map((track) => {
+}
+console.log(selectId);
+
+
+    
+      
+
+  arrangeList = getList?.map((track) => {
     return (
       <div key={track.id}>
 
