@@ -1,11 +1,13 @@
 import './App.css';
 // import ApiAccess from './Component/ApiAccess';
-import Movilist from './Component/Movilist';
+import FetchData from './Component/Movilist';
+import SearchMovie from './Component/SearchBar';
 
 function App() {
   return (
     <div className="App">
-      <Movilist/>
+      <FetchData/>
+      <SearchMovie/>
     </div>
   );
 }

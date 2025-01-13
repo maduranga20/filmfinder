@@ -1,13 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-
-
 import { Database } from './ApiAccess';
 
 
-function Movilist() {
+function AccessData(props){
+  console.log(props.artistData);
+  
+}
+
+
+function FetchData() {
   const [ list, setList ] = useState([]);
-  const [ keyValue, setKeyValue ] = useState();
+  
   // const [ change, setChangeList ] = useState();
 
 
@@ -23,63 +27,22 @@ function Movilist() {
         setList(data);
       });
   }, [ check ]);
-
-
-  const getList = list.results;
-  // let changeValue=getList;
-  // setChangeList(getList);
-  var arrangeList;
-
-
-  // filteredObj = getList?.filter(function (item) {
-  //   return item.id !==keyValue;
-
-
-  // var selectId ;
-  let selectId=[];
-
-if(keyValue===undefined){
-  // console.log("undefined");
+  const movieList = list.results;
+  // console.log(list)
   
-}
-else{
-  // selectId = getList?.filter(function (item) {
-  //   return item.id===keyValue;
-  // });
-  selectId.unshift(keyValue);
-
-}
-console.log(selectId);
-
-
-    
-      
-
-  arrangeList = getList?.map((track) => {
-    return (
-      <div key={track.id}>
-
-        <button onClick={() => {
-          setKeyValue(track.id)
-        }} > <p>{track.title}+</p> </button>
-      </div>
-
-    )
-  }
-
-  )
   return (
-
     <>
       <div>Movilist</div>
-      {arrangeList}
-
-
-    </>
+      <AccessData artistData={movieList}/>
+  </>
 
   )
 }
 
+// imagelink
+// https://image.tmdb.org/t/p/original//ftTSxC3ivxiS5iPABgXIANmQVH7.jpg
+//filmfinder link looking
+// api/getMovieInfo/:movieId
 
 
-export default Movilist;
+export default FetchData;
