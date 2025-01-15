@@ -1,42 +1,39 @@
-import React from 'react'
-// import { Database } from './ApiAccess';
+// Filename - App.js
 
-import { useState } from 'react';
-
+import React, { useState } from "react";
 
 function SearchMovie() {
-  const [ input, setInput ] = useState();
-  const [ submit, setSubmit ] = useState(false);
-  const [ searchValue, setSearchValue ] = useState();
+  const [ value, setValue ] = useState("");
+  const [ result, setResult ] = useState("");
+  function handleSubmit(e) {
+    e.preventDefault();
+    setResult(
 
-  function searchingArtist(event) {
-    setInput(event.target.value);
-    // console.log(submit);
-
+      value
+    );
   }
 
-  function submitInput(event) {
-    setSubmit(event);
-
-    if (submit.bubbles) {
-      setSearchValue(input);
-    }
-
+  function handleChange(e) {
+    setValue(e.target.value);
+    setResult("");
   }
-
-
-  //  onChange={searchingArtist}
-
   return (
-    <div>
-      <input type='text' onChange={searchingArtist}
-        // onKeyDown={this.keyEnter}
-        placeholder="Enter A Song, Album, or Artist" />
-      <button onClick={submitInput}>Search</button>
+    <div  >
 
+
+      <form onSubmit={handleSubmit}>
+      
+        <input
+          value={value}
+          onInput={handleChange}
+          required
+        />
+       
+        <button type="submit">Search</button>
+      </form>
+     
     </div>
-
-  )
+  );
 }
 
-export default SearchMovie
+export default SearchMovie;

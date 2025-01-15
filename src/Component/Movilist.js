@@ -3,10 +3,6 @@ import { useState, useEffect } from 'react';
 import { Database } from './ApiAccess';
 
 
-function AccessData(props){
-  console.log(props.artistData);
-  
-}
 
 
 function FetchData() {
@@ -27,13 +23,13 @@ function FetchData() {
         setList(data);
       });
   }, [ check ]);
-  const movieList = list.results;
+ 
   // console.log(list)
   
   return (
     <>
       <div>Movilist</div>
-      <AccessData artistData={movieList}/>
+    
   </>
 
   )
