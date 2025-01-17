@@ -4,15 +4,15 @@ import { Database } from './ApiAccess';
 
 
 
-
 function FetchData() {
   const [ list, setList ] = useState([]);
   
   // const [ change, setChangeList ] = useState();
-
+  
+  
 
   const check = Database();
-
+  
 
   useEffect(() => {
     fetch(check)
@@ -24,7 +24,7 @@ function FetchData() {
       });
   }, [ check ]);
  
-  // console.log(list)
+  console.log(list)
   
   return (
     <>

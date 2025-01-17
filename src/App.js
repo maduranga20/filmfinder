@@ -6,8 +6,9 @@ import SearchMovie from './Component/SearchBar';
 function App() {
   return (
     <div className="App">
-      <FetchData/>
+     <FetchData/>
     <SearchMovie/>
+ 
     </div>
   );
 }

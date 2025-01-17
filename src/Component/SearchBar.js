@@ -2,7 +2,23 @@
 
 import React, { useState } from "react";
 
-function SearchMovie() {
+ export function SearchValue({search}){
+
+  // console.log(typeof(search))
+
+let check;
+
+let res = (search in window) ?  false : check;
+// console.log(res)
+
+
+
+return (res);
+
+}
+
+
+export default function SearchMovie( ) {
   const [ value, setValue ] = useState("");
   const [ result, setResult ] = useState("");
   function handleSubmit(e) {
@@ -17,6 +33,8 @@ function SearchMovie() {
     setValue(e.target.value);
     setResult("");
   }
+
+
   return (
     <div  >
 
@@ -31,9 +49,11 @@ function SearchMovie() {
        
         <button type="submit">Search</button>
       </form>
-     
+    <SearchValue search={result}/>
     </div>
+    
   );
-}
 
-export default SearchMovie;
+  }
+
+
