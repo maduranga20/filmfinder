@@ -8,9 +8,13 @@ const apiKey = process.env.REACT_APP_APIKEY
 
  export function SearchValue({search}){
 
+  console.log(search);
+  let value="Avatar";
+
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
 
-return (search)
+return (url)
 
 }
 
@@ -38,7 +42,7 @@ export default function SearchMovie( ) {
 // console.log(result);
 // var defineresult = (result) ?  result : 'false';
 // let defineresult="define";
-console.log(process.env);
+console.log(apiKey);
 
   return (
     
