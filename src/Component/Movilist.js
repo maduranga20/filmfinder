@@ -1,30 +1,33 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { Database } from './ApiAccess';
+// import { useState } from 'react';
+// import { Database } from './ApiAccess';
+// import { SearchValue } from './SearchBar';
+import { URLDATA } from './SearchBar';
+
 
 
 
 function FetchData() {
-  const [ list, setList ] = useState([]);
+  // const [ list, setList ] = useState([]);
   
-  // const [ change, setChangeList ] = useState();
+  console.log(URLDATA);
   
-  
-
-  const check = Database();
   
 
-  useEffect(() => {
-    fetch(check)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setList(data);
-      });
-  }, [ check ]);
+  // const check = Database();
+  
+
+  // useEffect(() => {
+  //   fetch(check)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       setList(data);
+  //     });
+  // }, [ check ]);
  
-  console.log(list)
+  // console.log(list)
   
   return (
     <>
