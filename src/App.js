@@ -1,5 +1,4 @@
 import './App.css';
-// import ApiAccess from './Component/ApiAccess';
 import FetchData from './Component/Movilist';
 import SearchMovie from './Component/SearchBar';
 

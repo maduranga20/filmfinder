@@ -1,15 +1,19 @@
-import { SearchValue } from './SearchBar';
 
 
+// const test= SearchValue();
+// let defineresult = (test in window) ?  false : test;
 
 export  function Database() {
 // console.log(SearchValue);
-const test= SearchValue();
+
+
 
 // console.log(typeof(test))
-console.log((test in window))
-// console.log(test)
-let value='Avengers';
+// console.log((test in window))
+
+
+
+let value="Avatar";
 
 
 
