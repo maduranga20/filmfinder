@@ -1,33 +1,41 @@
 import React from 'react'
-// import { useState } from 'react';
+import { useState,useEffect } from 'react';
 // import { Database } from './ApiAccess';
 // import { SearchValue } from './SearchBar';
 import { URLDATA } from './SearchBar';
 
 
 
+const apiKey = process.env.REACT_APP_APIKEY
+
+// var URLDATA = {url:"Avatar"
+
 
 function FetchData() {
-  // const [ list, setList ] = useState([]);
+  const [ list, setList ] = useState([]);
   
   console.log(URLDATA);
   
   
+let value=URLDATA;
+  // const check = URLDATA.Url;
 
-  // const check = Database();
+  // console.log(typeof(check));
   
+  const check= `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
-  // useEffect(() => {
-  //   fetch(check)
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setList(data);
-  //     });
-  // }, [ check ]);
+
+  useEffect(() => {
+    fetch(check)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setList(data);
+      });
+  }, [check]);
  
-  // console.log(list)
+  console.log(list)
   
   return (
     <>

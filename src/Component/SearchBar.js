@@ -1,27 +1,37 @@
 
 import React, { useState } from "react";
 
-const apiKey = process.env.REACT_APP_APIKEY
 
 // let search ='define';
 
-export  var URLDATA={}
+export var URLDATA
 
 
-  function SearchValue({search}){
 
-  console.log(search);
+
+export function SearchValue({ search }) {
+ 
+  // var defineresult = (search) ? search : false;
+  // URLDATA = (search) ? search : 'Avatar';
+  // URLDATA.url="Avatar";
+  URLDATA=search;
   // let value="Avatar";
 
-  URLDATA.Url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${search}&page=3&include_adult=false`;
+//   if (defineresult) {
+//   }
+//   else {
+// }
 
 
-return (<></>)
+  
+
+
+  
 
 }
 
 
-export default function SearchMovie( ) {
+export default function SearchMovie() {
   const [ value, setValue ] = useState();
   const [ result, setResult ] = useState('');
   function handleSubmit(e) {
@@ -35,42 +45,41 @@ export default function SearchMovie( ) {
   function handleChange(e) {
     setValue(e.target.value);
     setResult("");
-   
+
   }
 
- 
+
   // let result="define"
 
-// console.log(result);
-// var defineresult = (result) ?  result : 'false';
-// let defineresult="define";
-// console.log(apiKey);
-// let data="Avatar";
+  // console.log(result);
+  // var defineresult = (result) ?  result : 'false';
+  // let defineresult="define";
+  // console.log(apiKey);
+  // let data="Avatar";
 
   return (
-    
+
     <div  >
 
 
       <form onSubmit={handleSubmit}>
-      
+
         <input
           value={value}
           onInput={handleChange}
           required
         />
-       
+
         <button type="submit">Search</button>
 
-        <SearchValue  search={result}/>
+        <SearchValue search={result} />
       </form>
-     
-      
+
+
     </div>
-    
+
   );
 
-  }
+}
 
- 
- 
+
