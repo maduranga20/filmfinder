@@ -1,5 +1,8 @@
 
 import { useState, useEffect } from 'react';
+import './Style/pageStyle.css'
+
+
 
 const apiKey = process.env.REACT_APP_APIKEY
 
@@ -60,7 +63,10 @@ export default function SearchMovie() {
 
     <div  >
 
+<div class="wrap">
 
+  
+</div>
       <form onSubmit={handleSubmit}>
 
         <input
