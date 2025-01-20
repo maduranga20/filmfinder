@@ -1,11 +1,11 @@
 import './App.css';
-import FetchData from './Component/Movilist';
-import SearchMovie from './Component/SearchBar';
+// import FetchData from './Component/Movilist';
+// import SearchMovie from './Component/SearchBar';
+import SearchMovie from './Component/Movilist';
 
 function App() {
   return (
     <div className="App">
-     <FetchData/>
     <SearchMovie/>
  
     </div>
