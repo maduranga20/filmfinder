@@ -25,7 +25,7 @@ export function SearchValue({ search }) {
 
   // console.log(list.results)
 
- 
+
 
   return (
     <>
@@ -63,22 +63,23 @@ export default function SearchMovie() {
 
     <div  >
 
-<div class="wrap">
+      <div class="wrap">
+        <div class="search">
+          <form onSubmit={handleSubmit}>
 
-  
-</div>
-      <form onSubmit={handleSubmit}>
+            <input 
+              value={value}
+              onInput={handleChange}
+              required
+              class="searchTerm" />
 
-        <input
-          value={value}
-          onInput={handleChange}
-          required
-        />
+            <button type="submit" class="searchButton">Search</button>
 
-        <button type="submit">Search</button>
+            <SearchValue search={result} />
+          </form>
+        </div>
 
-        <SearchValue search={result} />
-      </form>
+      </div>
 
 
     </div>
