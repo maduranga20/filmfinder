@@ -63,17 +63,17 @@ export default function SearchMovie() {
 
     <div  >
 
-      <div class="wrap">
-        <div class="search">
+      <div className="wrap">
+        <div className="search">
           <form onSubmit={handleSubmit}>
 
             <input 
               value={value}
               onInput={handleChange}
               required
-              class="searchTerm" />
+              className="searchTerm" />
 
-            <button type="submit" class="searchButton">Search</button>
+            <button type="submit" className="searchButton">Search</button>
           </form>
           <SearchValue search={result} />
         </div>
