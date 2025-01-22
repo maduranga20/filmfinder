@@ -74,9 +74,8 @@ export default function SearchMovie() {
               class="searchTerm" />
 
             <button type="submit" class="searchButton">Search</button>
-
-            <SearchValue search={result} />
           </form>
+          <SearchValue search={result} />
         </div>
 
       </div>
