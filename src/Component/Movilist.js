@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import './Style/pageStyle.css'
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
 
 const apiKey = process.env.REACT_APP_APIKEY
@@ -31,11 +31,14 @@ export function SearchValue({ search }) {
     <>
       {(search) ? list.results.map(function (movie) {
         return (
-          <div key={movie.id}>
-            <p>Movie Name: {movie.title}</p>
+          <div className="card">
+            <div key={movie.id}>
+              <p className="title">Movie Name: {movie.title}</p>
+            </div>
           </div>
         )
       }) : ''}
+
     </>
 
   )
@@ -67,7 +70,7 @@ export default function SearchMovie() {
         <div className="search">
           <form onSubmit={handleSubmit}>
 
-            <input 
+            <input
               value={value}
               onInput={handleChange}
               required
@@ -79,7 +82,9 @@ export default function SearchMovie() {
         </div>
 
       </div>
-
+      <div>
+        <a href="#"><i className="fa fa-facebook"></i></a>
+      </div>
 
     </div>
 
