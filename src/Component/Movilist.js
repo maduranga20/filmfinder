@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import './Style/pageStyle.css'
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
 
 const apiKey = process.env.REACT_APP_APIKEY
@@ -25,8 +24,9 @@ export function SearchValue({ search }) {
 
   // console.log(list.results)
 
+function renderCards(){
 
-
+}
   return (
     <>
       {(search) ? list.results.map(function (movie) {
@@ -89,7 +89,7 @@ export default function SearchMovie() {
     </div>
 
   );
-
+ 
 }
 
 // imagelink
