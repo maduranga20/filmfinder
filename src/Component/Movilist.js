@@ -24,18 +24,18 @@ export function SearchValue({ search }) {
 
   // console.log(list.results)
 
-function renderCards(){
-
-}
   return (
     <>
       {(search) ? list.results.map(function (movie) {
         return (
-          <div className="card">
-            <div key={movie.id}>
-              <p className="title">Movie Name: {movie.title}</p>
+          <div className='cardlist'>
+            <div className="card">
+              <div key={movie.id}>
+                <p className="title">Movie Name: {movie.title}</p>
+              </div>
             </div>
           </div>
+
         )
       }) : ''}
 
@@ -82,14 +82,12 @@ export default function SearchMovie() {
         </div>
 
       </div>
-      <div>
-        <a href="#"><i className="fa fa-facebook"></i></a>
-      </div>
+
 
     </div>
 
   );
- 
+
 }
 
 // imagelink

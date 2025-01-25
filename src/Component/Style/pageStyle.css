@@ -17,7 +17,7 @@ body{
   width: 100%;
   position: relative;
   top:25px;
-  background-color: green;
+  /* background-color: green; */
 }
 
 .searchTerm {
@@ -44,12 +44,16 @@ body{
 }
 
 
-
+.cardlist{
+  display: flex;
+  justify-content: flex-start;
+}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width: 400px;
+  height: 200px;
   margin: auto;
-  text-align: center;
+  /* text-align: center; */
   font-family: arial;
 }
 
