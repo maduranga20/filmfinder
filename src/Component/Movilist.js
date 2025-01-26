@@ -22,7 +22,7 @@ export function SearchValue({ search }) {
       });
   }, [ check ]);
 
-  // console.log(list.results)
+  console.log(list.results)
 
   return (
     <>
@@ -30,8 +30,11 @@ export function SearchValue({ search }) {
         return (
           <div className='cardlist'>
             <div className="card">
-              <div key={movie.id}>
-                <p className="title">Movie Name: {movie.title}</p>
+              <div key={movie.id} className="frame">
+                <div className="content">
+                  <p><span>{movie.title}</span></p>
+                  <p><span>{movie.overview}</span></p>
+                </div>
               </div>
             </div>
           </div>
@@ -78,12 +81,12 @@ export default function SearchMovie() {
 
             <button type="submit" className="searchButton">Search</button>
           </form>
-          <SearchValue search={result} />
-        </div>
 
+        </div>
+        <SearchValue search={result} />
       </div>
 
-
+     
     </div>
 
   );
