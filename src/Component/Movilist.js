@@ -24,6 +24,7 @@ export function SearchValue({ search }) {
 
   console.log(list.results)
 // let image='UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg';
+// poster_path
   return (
     <>
       {(search) ? list.results.map(function (movie) {
@@ -32,7 +33,7 @@ export function SearchValue({ search }) {
             <div className="card">
               <div key={movie.id} className="frame">
               <div className="image-container">
-              <img src="https://image.tmdb.org/t/p/original//UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg" alt="img"/>
+              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="img"/>
             </div>
           
                 <div className="content">
@@ -74,6 +75,7 @@ export default function SearchMovie() {
     <div  >
 
       <div className="wrap">
+        <h2>Film Finder</h2>
         <div className="search">
           <form onSubmit={handleSubmit}>
 
