@@ -23,7 +23,7 @@ export function SearchValue({ search }) {
   }, [ check ]);
 
   console.log(list.results)
-
+// let image='UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg';
   return (
     <>
       {(search) ? list.results.map(function (movie) {
@@ -31,8 +31,12 @@ export function SearchValue({ search }) {
           <div className='cardlist'>
             <div className="card">
               <div key={movie.id} className="frame">
+              <div className="image-container">
+              <img src="https://image.tmdb.org/t/p/original//UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg" alt="img"/>
+            </div>
+          
                 <div className="content">
-                  <p><span>{movie.title}</span></p>
+                  <h4><span>{movie.title}</span></h4>
                   <p><span>{movie.overview}</span></p>
                 </div>
               </div>
