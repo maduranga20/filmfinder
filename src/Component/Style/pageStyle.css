@@ -60,9 +60,9 @@ body{
   } */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height: 440px;
-  margin: auto;
+  width: 280px;
+  height: 500px;
+  /* margin: auto;   */
   background-color: lightgoldenrodyellow;
   display: inline-block;
   /* text-align: center; */
@@ -70,6 +70,7 @@ body{
   position: relative;
   /* top: 20px; */
   margin: 10px 10px;
+  border-radius: 25px;
 }
 
 
@@ -84,19 +85,20 @@ p{
   text-align: justify;
 }
 
-image-container {
+/* image-container {
   background: white;
   width: 220px;
   height: 220px;
   padding: 5px;
   transform: translate(100px, 100px);
-}
+} */
 
 .image-container img {
   object-fit: cover;
-  width: 220px;
-  height: 220px;
+  width: 280px;
+  height:  270px;
   margin-top: 20px;
+  padding-left: 0px;
   /* border-radius: 50%; */
 }
 
