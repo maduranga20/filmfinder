@@ -75,7 +75,10 @@ export default function SearchMovie() {
     <div  >
 
       <div className="wrap">
-        <h2>Film Finder</h2>
+        <div className='heading'>
+        <h2 >Film Finder</h2>
+        </div>
+       
         <div className="search">
           <form onSubmit={handleSubmit}>
 
