@@ -61,7 +61,7 @@ body{
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 280px;
-  height: 500px;
+  height: auto;
   /* margin: auto;   */
   background-color: lightgoldenrodyellow;
   display: inline-block;
@@ -74,16 +74,20 @@ body{
 }
 
 
-.content {
+.content p {
   color: grey;
-  font-size: 11px;
+  font-size: 12px;
   padding: 10px;
- 
+  text-align: justify;
   /* font-weight: 900; */
 }
-p{
-  text-align: justify;
+
+.content h4 {
+  padding: 10px;
 }
+/* p{
+  text-align: justify;
+} */
 
 /* image-container {
   background: white;
@@ -103,8 +107,8 @@ p{
 }
 
 .heading, h2{
-   font-family: 'Roboto';
-   font-size: 30px;
+  font-family: 'Roboto';
+  font-size: 30px;
   font-weight: 600;
   color: #00B4CC;
   background-color: black;
