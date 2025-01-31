@@ -8,6 +8,8 @@ const apiKey = process.env.REACT_APP_APIKEY
 
 export function SearchValue({ search }) {
   const [ list, setList ] = useState('');
+  const [ loading, setLoading ] = useState('');
+
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
