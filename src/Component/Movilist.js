@@ -8,16 +8,22 @@ const apiKey = process.env.REACT_APP_APIKEY
 
 export function SearchValue({ search }) {
   const [ list, setList ] = useState('');
-  const [ loading, setLoading ] = useState('');
+  // const [ loading, setLoading ] = useState('');
 
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
+ 
+  
+ 
 
   useEffect(() => {
     const fetchlist = async () => {
       await fetch(check)
+     
+      
         .then((res) => {
+          console.log(res);
           return res.json();
         })
         .then((data) => {
@@ -25,10 +31,10 @@ export function SearchValue({ search }) {
         })
         .catch((e) => console.log(e));
     };
-
+   
     const timer = setTimeout(() => {
       fetchlist();
-    }, 5000);
+    }, 3000);
 
     return ()=>clearTimeout(timer);
 
@@ -68,19 +74,20 @@ export function SearchValue({ search }) {
 export default function SearchMovie() {
   const [ value, setValue ] = useState('');
   const [ result, setResult ] = useState('');
+  // const [ error, setError] = useState('');
+
+
   function handleSubmit(e) {
     e.preventDefault();
-    setResult(
-
-      value
-    );
+    console.log(value);
+    setResult(value);
   }
+
 
   function handleChange(e) {
     setValue(e.target.value);
     setResult("");
-
-  }
+}
 
   return (
 

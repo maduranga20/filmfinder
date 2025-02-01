@@ -26,6 +26,7 @@ body{
   border: 3px solid #00B4CC;
   /* padding: 5px; */
   height: 25px;
+  width: 300px;
   border-radius: 5px 0 0 5px;
   outline: none;
   font-size: 14px;
@@ -50,10 +51,11 @@ body{
 
 }
 
-input[attribute=value]{
+/* input[attribute=value]{
   color: #df1414;
   font-size: 16px;
-}
+} */
+ 
 .searchButton:hover {
   background: #0198ac;
 }
