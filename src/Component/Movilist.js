@@ -6,41 +6,48 @@ import './Style/pageStyle.css'
 const apiKey = process.env.REACT_APP_APIKEY
 
 
-export function SearchValue({ search }) {
+function LoadingSpinner(){
+  return(
+    <div>
+
+    </div>
+  )
+}
+
+ function SearchValue({ search }) {
   const [ list, setList ] = useState('');
   // const [ loading, setLoading ] = useState('');
 
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
- 
-  
- 
+
 
   useEffect(() => {
     const fetchlist = async () => {
       await fetch(check)
-     
-      
         .then((res) => {
-          console.log(res);
           return res.json();
         })
         .then((data) => {
           setList(data);
         })
         .catch((e) => console.log(e));
+
     };
    
     const timer = setTimeout(() => {
       fetchlist();
     }, 3000);
 
-    return ()=>clearTimeout(timer);
+    
+    return () => clearTimeout(timer);
+    
+  }, [ check]);
 
-  }, [ check ]);
+  console.log(list.results);
+  // console.log(loading);
 
-  console.log(list.results)
   // let image='UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg';
   // poster_path
   return (
@@ -78,8 +85,9 @@ export default function SearchMovie() {
 
 
   function handleSubmit(e) {
+    console.log(e);
     e.preventDefault();
-    console.log(value);
+   
     setResult(value);
   }
 
@@ -87,7 +95,7 @@ export default function SearchMovie() {
   function handleChange(e) {
     setValue(e.target.value);
     setResult("");
-}
+  }
 
   return (
 
