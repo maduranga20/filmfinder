@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import './Style/pageStyle.css'
-
+import Timer from './Timer';
 
 const apiKey = process.env.REACT_APP_APIKEY
 
@@ -10,13 +10,14 @@ const apiKey = process.env.REACT_APP_APIKEY
 
 function SearchValue({ search }) {
   const [ list, setList ] = useState('');
-  const [ isLoading, setIsLoading ] = useState(true);
+  // const [ isLoading, setIsLoading ] = useState(true);
 
 
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
-
+  const timing=Timer();
+  console.log(timing);
 
   useEffect(() => {
     const fetchlist = async () => {
@@ -30,19 +31,25 @@ function SearchValue({ search }) {
         .catch((e) => console.log(e));
 
     };
+    
+    // Timer();
+   fetchlist();
+    
+ 
+    // console.log(timing);
+    
+    // const timer = setTimeout(() => {
+     
 
-    const timer = setTimeout(() => {
-      fetchlist();
-      setIsLoading(false);
-
-    }, 3000);
+    // }, 3000);
 
 
-    return () => clearTimeout(timer);
+    // return () => clearTimeout(timer);
 
-  }, [ check ]);
+  }, [timing, check ]);
+  
+  // console.log(list.results);
 
-  console.log(list.results);
   // console.log(loading);
 
   // let image='UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg';
