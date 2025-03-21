@@ -17,34 +17,42 @@ function SearchValue({ search }) {
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
   const timing=Timer();
-  console.log(timing);
+  // console.log(timing);
 
   useEffect(() => {
+    
     const fetchlist = async () => {
       await fetch(check)
         .then((res) => {
           return res.json();
         })
+        
         .then((data) => {
           setList(data);
+          
         })
         .catch((e) => console.log(e));
 
     };
-    
+   
+   
     // Timer();
-   fetchlist();
+  // const list= fetchlist();
+  // fetchlist();
+
+  
+  // console.log(timing);
+
     
- 
-    // console.log(timing);
+    const timer = setTimeout(() => {
+      fetchlist()
+
+    }, 5000);
+
+
+    return () => clearTimeout(timer);
+
     
-    // const timer = setTimeout(() => {
-     
-
-    // }, 3000);
-
-
-    // return () => clearTimeout(timer);
 
   }, [timing, check ]);
   
