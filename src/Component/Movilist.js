@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import './Style/pageStyle.css'
+import './Style/pageStyle.css';
+import './Style/timer.css';
 import Timer from './Timer';
 
 const apiKey = process.env.REACT_APP_APIKEY
@@ -16,8 +17,15 @@ function SearchValue({ search }) {
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
+
   const timing=Timer();
+  // console.log("from search"+Boolean(value));
   // console.log(timing);
+
+  if(value){
+    // console.log(timing);
+    // return <h2>chk</h2>
+  }
 
   useEffect(() => {
     
