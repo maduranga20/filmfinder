@@ -18,40 +18,33 @@ function SearchValue({ search }) {
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
 
-  const timing=Timer();
-  // console.log("from search"+Boolean(value));
-  // console.log(timing);
 
-  if(value){
-    // console.log(timing);
-    // return <h2>chk</h2>
-  }
+  const spinner = Timer();
+  const load = false;
+
+  const spin = (spinner) ? <div className='spinner'>
+    <span className="loader"> </span>
+  </div> : "";
+
+  console.log(load && spin);
+
 
   useEffect(() => {
-    
+
     const fetchlist = async () => {
       await fetch(check)
         .then((res) => {
           return res.json();
         })
-        
+
         .then((data) => {
           setList(data);
-          
+
         })
         .catch((e) => console.log(e));
 
     };
-   
-   
-    // Timer();
-  // const list= fetchlist();
-  // fetchlist();
 
-  
-  // console.log(timing);
-
-    
     const timer = setTimeout(() => {
       fetchlist()
 
@@ -60,25 +53,17 @@ function SearchValue({ search }) {
 
     return () => clearTimeout(timer);
 
-    
 
-  }, [timing, check ]);
-  
-  // console.log(list.results);
 
-  // console.log(loading);
+  }, [ check ]);
 
-  // let image='UNs12yJwQHJQiyTSK8OfQ3ib0m.jpg';
-  // poster_path
-  // if (search) {
-  //   return <div >
-  //     <p>...Loading</p>
-  //   </div>;
-  // }
+
   return (
     <>
+      {spin}
       {(search) ? list.results.map(function (movie) {
         return (
+
           <div className='cardlist'>
             <div className="card">
               <div key={movie.id} className="frame">
@@ -89,6 +74,7 @@ function SearchValue({ search }) {
                 <div className="content">
                   <h4><span>{movie.title}</span></h4>
                   <p><span>{movie.overview}</span></p>
+
                 </div>
               </div>
             </div>
@@ -100,6 +86,7 @@ function SearchValue({ search }) {
     </>
 
   )
+
 }
 
 
