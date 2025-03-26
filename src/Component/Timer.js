@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
-      const [ isLoading, setIsLoading ] = useState(true);
+      const [ isLoading, setIsLoading ] = useState(false);
      useEffect(() => {
     
         const timeoutId =   setTimeout(() => {
-                setIsLoading(false);
-            }, 5000);
+                setIsLoading(true);
+            }, 3000);
 
             return () => clearTimeout(timeoutId);
 
