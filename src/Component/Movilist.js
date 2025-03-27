@@ -2,7 +2,7 @@
 import { useState, useEffect,useMemo } from 'react';
 import './Style/pageStyle.css';
 import './Style/timer.css';
-import Timer from './Timer';
+// import Timer from './Timer';
 
 const apiKey = process.env.REACT_APP_APIKEY
 
@@ -11,37 +11,58 @@ const apiKey = process.env.REACT_APP_APIKEY
 
 function SearchValue({ search }) {
   const [ list, setList ] = useState('');
-  // const [ isLoading, setIsLoading ] = useState(false);
+
+  const [ isLoading, setIsLoading ] = useState(false);
 
 
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
 
-  const fetchlist = async () => {
-    await fetch(check) 
-      .then((res) => {
-        return res.json();
-      })
+  // const fetchlist = async () => {
+  //   await fetch(check) 
+  //     .then((res) => {
+  //       return res.json();
+  //     })
 
-      .then((data) => {
-        setList(data);
+  //     .then((data) => {
+  //       setList(data);
 
-      })
+  //     })
     
-      .catch((e) => console.log(e));
+  //     .catch((e) => console.log(e));
 
-  };
+  // };
 
 
-  const spinner = Timer();
+  // const spinner = Timer();
+ 
+  const  fetchlist = useMemo(() =>  async () => {
+      await fetch(check) 
+        .then((res) => {
+          return res.json();
+        })
+  
+        .then((data) => {
+          setList(data);
+  
+        })
+      
+        .catch((e) => console.log(e));
+  
+    },[check]
+  );
 
+
+  // console.log(value);
+  
   if(value){
-    console.log("click");
+    console.log ("click");
+    console.log(isLoading);
     
   }
   else{
     console.log("no click");
-  
+    console.log(isLoading);
   }
 
   // console.log(spinner);
@@ -56,10 +77,10 @@ function SearchValue({ search }) {
 
 
   useEffect(() => {
-
+    // console.log(setSpin);
     // fetchlist();
     const timer = setTimeout(() => {
-     
+      setIsLoading(true)
       fetchlist()
      
     }, 3000);
@@ -70,7 +91,7 @@ function SearchValue({ search }) {
 
 
 
-  });
+  },[fetchlist]);
 
   
 
@@ -113,9 +134,7 @@ export default function SearchMovie() {
 
 
   function handleSubmit(e) {
-    console.log(e);
     e.preventDefault();
-
     setResult(value);
   }
 
