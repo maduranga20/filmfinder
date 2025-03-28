@@ -2,7 +2,7 @@
 import { useState, useEffect,useMemo } from 'react';
 import './Style/pageStyle.css';
 import './Style/timer.css';
-// import Timer from './Timer';
+import Timer from './Timer';
 
 const apiKey = process.env.REACT_APP_APIKEY
 
@@ -34,17 +34,20 @@ function SearchValue({ search }) {
   // };
 
 
-  // const spinner = Timer();
+  const spinTime = Timer();
  
   const  fetchlist = useMemo(() =>  async () => {
       await fetch(check) 
         .then((res) => {
+         
           return res.json();
+         
         })
   
         .then((data) => {
           setList(data);
-  
+          // console.log(data.results.length);
+          setIsLoading((data.results.length>0)?  true : false) ;
         })
       
         .catch((e) => console.log(e));
@@ -53,36 +56,39 @@ function SearchValue({ search }) {
   );
 
 
-  // console.log(value);
+  console.log(isLoading);
   
-  if(value){
-    console.log ("click");
-    console.log(isLoading);
+  // if(value){
+  //   console.log ("click");
+  //   console.log(isLoading);
     
-  }
-  else{
-    console.log("no click");
-    console.log(isLoading);
-  }
+  // }
+  // else{
+  //   console.log("no click");
+  //   console.log(isLoading);
+  // }
 
   // console.log(spinner);
   
   // const load = false;
-
-  // const spin = (spinner) ? <div className='spinner'>
-  //   <span className="loader"> </span>
-  // </div> : "";
+  const setspinTime=(value)? spinTime : false;
+  const spin = (setspinTime) ? <div className='spinner'>
+    <span className="loader"> </span>
+  </div> : "";
 
   // console.log(load && spin);
+
+  
+  // console.log();
 
 
   useEffect(() => {
     // console.log(setSpin);
     // fetchlist();
     const timer = setTimeout(() => {
-      setIsLoading(true)
+      // setIsLoading(true)
       fetchlist()
-     
+      
     }, 3000);
 
 
@@ -98,7 +104,7 @@ function SearchValue({ search }) {
   return (
    
     <>
-      
+   
       {(search) ? list.results?.map(function (movie) {
         return (
 
