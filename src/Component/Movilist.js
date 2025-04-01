@@ -1,5 +1,5 @@
 
-import { useState, useEffect,useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './Style/pageStyle.css';
 import './Style/timer.css';
 import Timer from './Timer';
@@ -12,7 +12,7 @@ const apiKey = process.env.REACT_APP_APIKEY
 function SearchValue({ search }) {
   const [ list, setList ] = useState('');
 
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [ isFetch, setFetch ] = useState(false);
 
 
   let value = search;
@@ -28,40 +28,39 @@ function SearchValue({ search }) {
   //       setList(data);
 
   //     })
-    
+
   //     .catch((e) => console.log(e));
 
   // };
 
 
   const spinTime = Timer();
- 
-  const  fetchlist = useMemo(() =>  async () => {
-      await fetch(check) 
-        .then((res) => {
-         
-          return res.json();
-         
-        })
-  
-        .then((data) => {
-          setList(data);
-          // console.log(data.results.length);
-          setIsLoading((data.results.length>0)?  true : false) ;
-        })
-      
-        .catch((e) => console.log(e));
-  
-    },[check]
+
+  const fetchlist = useMemo(() => async () => {
+    await fetch(check)
+      .then((res) => {
+
+        return res.json();
+
+      })
+
+      .then((data) => {
+        setList(data);
+        // console.log(data.results.length);
+        setFetch((data.results.length > 0) ? false : true);
+      })
+
+      .catch((e) => console.log(e));
+
+  }, [ check ]
   );
 
 
-  console.log(isLoading);
-  
+
   // if(value){
   //   console.log ("click");
   //   console.log(isLoading);
-    
+
   // }
   // else{
   //   console.log("no click");
@@ -69,16 +68,19 @@ function SearchValue({ search }) {
   // }
 
   // console.log(spinner);
-  
+
   // const load = false;
-  const setspinTime=(value)? spinTime : false;
+  const setspinTime = (value) ? spinTime : false;
   const spin = (setspinTime) ? <div className='spinner'>
     <span className="loader"> </span>
   </div> : "";
 
+  const loadData = (isFetch) ? spin : "";
+  console.log(loadData);
+
   // console.log(load && spin);
 
-  
+
   // console.log();
 
 
@@ -88,23 +90,23 @@ function SearchValue({ search }) {
     const timer = setTimeout(() => {
       // setIsLoading(true)
       fetchlist()
-      
+
     }, 3000);
 
 
     return () => clearTimeout(timer);
-   
 
 
 
-  },[fetchlist]);
 
-  
+  }, [ fetchlist ]);
+
+
 
   return (
-   
+
     <>
-   
+      {loadData}
       {(search) ? list.results?.map(function (movie) {
         return (
 
