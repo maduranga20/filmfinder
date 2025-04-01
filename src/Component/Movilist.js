@@ -45,8 +45,7 @@ function SearchValue({ search }) {
     <span className="loader"> </span>
   </div> : "";
 
-  const loadData = (isFetch) ? spin : "";
-  console.log(loadData);
+  
 
   const loadData=(isLFecth)?spin:"";
 
