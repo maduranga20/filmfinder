@@ -1,5 +1,5 @@
 
-import { useState, useEffect,useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './Style/pageStyle.css';
 import './Style/timer.css';
 import Timer from './Timer';
@@ -45,6 +45,9 @@ function SearchValue({ search }) {
     <span className="loader"> </span>
   </div> : "";
 
+  const loadData = (isFetch) ? spin : "";
+  console.log(loadData);
+
   const loadData=(isLFecth)?spin:"";
 
 console.log(loadData);
@@ -52,21 +55,21 @@ console.log(loadData);
   useEffect(() => {
     const timer = setTimeout(() => {
       fetchlist()
-      
+
     }, 3000);
 
 
     return () => clearTimeout(timer);
-   
 
 
 
-  },[fetchlist]);
 
-  
+  }, [ fetchlist ]);
+
+
 
   return (
-   
+
     <>
    {loadData}
       {(search) ? list.results?.map(function (movie) {
