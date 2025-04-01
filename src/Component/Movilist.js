@@ -12,27 +12,11 @@ const apiKey = process.env.REACT_APP_APIKEY
 function SearchValue({ search }) {
   const [ list, setList ] = useState('');
 
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [ isLFecth, setFecth ] = useState(false);
 
 
   let value = search;
   const check = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${value}&page=3&include_adult=false`;
-
-  // const fetchlist = async () => {
-  //   await fetch(check) 
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-
-  //     .then((data) => {
-  //       setList(data);
-
-  //     })
-    
-  //     .catch((e) => console.log(e));
-
-  // };
-
 
   const spinTime = Timer();
  
@@ -46,8 +30,7 @@ function SearchValue({ search }) {
   
         .then((data) => {
           setList(data);
-          // console.log(data.results.length);
-          setIsLoading((data.results.length>0)?  true : false) ;
+          setFecth((data.results.length>0)?  false : true) ;
         })
       
         .catch((e) => console.log(e));
@@ -56,37 +39,18 @@ function SearchValue({ search }) {
   );
 
 
-  console.log(isLoading);
   
-  // if(value){
-  //   console.log ("click");
-  //   console.log(isLoading);
-    
-  // }
-  // else{
-  //   console.log("no click");
-  //   console.log(isLoading);
-  // }
-
-  // console.log(spinner);
-  
-  // const load = false;
   const setspinTime=(value)? spinTime : false;
   const spin = (setspinTime) ? <div className='spinner'>
     <span className="loader"> </span>
   </div> : "";
 
-  // console.log(load && spin);
+  const loadData=(isLFecth)?spin:"";
 
-  
-  // console.log();
-
+console.log(loadData);
 
   useEffect(() => {
-    // console.log(setSpin);
-    // fetchlist();
     const timer = setTimeout(() => {
-      // setIsLoading(true)
       fetchlist()
       
     }, 3000);
@@ -104,7 +68,7 @@ function SearchValue({ search }) {
   return (
    
     <>
-   
+   {loadData}
       {(search) ? list.results?.map(function (movie) {
         return (
 
@@ -136,7 +100,6 @@ function SearchValue({ search }) {
 export default function SearchMovie() {
   const [ value, setValue ] = useState('');
   const [ result, setResult ] = useState('');
-  // const [ error, setError] = useState('');
 
 
   function handleSubmit(e) {
